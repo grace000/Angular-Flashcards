@@ -9,6 +9,7 @@ marshmallow = "*"
 sqlalchemy = "*"
 "psycopg2-binary" = "*"
 flask-cors = "*"
+python-jose-cryptodome = "*"
 
 [dev-packages]
 

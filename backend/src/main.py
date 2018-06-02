@@ -3,9 +3,12 @@ from flask_cors import CORS
 
 from .entities.entity import Session, engine, Base
 from .entities.flashcard import Flashcard, FlashcardSchema
+from .auth import AuthError, requires_auth
+
 
 # creating the Flask application
 app = Flask(__name__)
+CORS(app)
 
 # generate database schema
 Base.metadata.create_all(engine)
@@ -26,6 +29,7 @@ def get_flashcards():
 
 
 @app.route('/flashcards', methods=['POST'])
+@requires_auth
 def add_flashcard():
     # mount flashcard object
     posted_flashcard = FlashcardSchema(only=('title', 'description'))\
@@ -42,3 +46,9 @@ def add_flashcard():
     new_flashcard = FlashcardSchema().dump(flashcard).data
     session.close()
     return jsonify(new_flashcard), 201
+
+@app.errorhandler(AuthError)
+def handle_auth_error(ex):
+    response = jsonify(ex.error)
+    response.status_code = ex.status_code
+    return response
