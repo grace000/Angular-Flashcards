@@ -7,15 +7,29 @@ import {FlashcardsApiService} from './flashcards-api.service';
 @Component({
   selector: 'flashcards',
   template: `
-    <div>
-      <button routerLink="/new-flashcard">New Flashcard</button>
-      <ul>
-        <li *ngFor="let flashcard of flashcardsList">
-          {{flashcard.title}}
-        </li>
-      </ul>
+    <h2>Flashcards</h2>
+    <p>Choose a flashcard deck and start studying.</p>
+    <div class="flashcards">
+      <mat-card class="example-card" *ngFor="let flashcard of flashcardsList" class="mat-elevation-z5">
+        <mat-card-content>
+          <mat-card-title>{{flashcard.title}}</mat-card-title>
+          <mat-card-subtitle>{{flashcard.description}}</mat-card-subtitle>
+          <p>
+            Etiam enim purus, vehicula nec dapibus quis, egestas eu quam.
+            Nullam eleifend auctor leo, vitae rhoncus mi sodales vel.
+            Aenean fermentum laoreet volutpat. Integer quam orci,
+            molestie non nibh suscipit, faucibus euismod sapien.
+          </p>
+          <button mat-raised-button color="accent">Start Deck</button>
+        </mat-card-content>
+      </mat-card>
     </div>
-  `
+    <button mat-fab color="primary" *ngIf="authenticated"
+            class="new-flashcard" routerLink="/new-flashcard">
+      <i class="material-icons">note_add</i>
+    </button>
+  `,
+  styleUrls: ['flashcards.component.css'],
 })
 
 export class FlashcardsComponent implements OnInit, OnDestroy {

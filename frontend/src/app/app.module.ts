@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule, MatButtonModule} from '@angular/material';
+import {MatToolbarModule, MatButtonModule, MatCardModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import {FlashcardsApiService} from './flashcards/flashcards-api.service';
@@ -35,6 +35,7 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
   ],
   providers: [FlashcardsApiService],
   bootstrap: [AppComponent]
