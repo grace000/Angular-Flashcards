@@ -9,9 +9,6 @@ import {FlashcardsApiService} from './flashcards-api.service';
   template: `
     <div>
       <button routerLink="/new-flashcard">New Flashcard</button>
-      <button (click)="signIn()" *ngIf="!authenticated">Sign In</button>
-      <button (click)="signOut()" *ngIf="authenticated">Sign Out</button>
-      <p *ngIf="authenticated">Hello, {{getProfile().name}}</p>
       <ul>
         <li *ngFor="let flashcard of flashcardsList">
           {{flashcard.title}}
@@ -27,10 +24,6 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
   authenticated = false;
 
   constructor(private flashcardsApi: FlashcardsApiService) { }
-
-  signIn = Auth0.signIn;
-  signOut = Auth0.signOut;
-  getProfile = Auth0.getProfile;
 
 
   ngOnInit() {

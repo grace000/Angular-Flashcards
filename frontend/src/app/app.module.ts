@@ -2,6 +2,8 @@ import * as Auth0 from 'auth0-web';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule, MatButtonModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import {FlashcardsApiService} from './flashcards/flashcards-api.service';
@@ -30,6 +32,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
     ),
+    NoopAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [FlashcardsApiService],
   bootstrap: [AppComponent]
