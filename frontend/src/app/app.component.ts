@@ -13,6 +13,7 @@ import * as Auth0 from 'auth0-web';
 
       <button mat-button (click)="signIn()" *ngIf="!authenticated">Sign In</button>
       <button mat-button (click)="signOut()" *ngIf="authenticated">Sign Out</button>
+      <p *ngIf="authenticated">Hello, {{getProfile().name}}</p>
     </mat-toolbar>
 
     <div class="view-container">
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
 
   signIn = Auth0.signIn;
   signOut = Auth0.signOut;
+  getProfile = Auth0.getProfile;
 
   ngOnInit() {
     const self = this;

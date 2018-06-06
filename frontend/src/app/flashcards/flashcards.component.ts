@@ -77,7 +77,7 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
   isAdmin() {
     if (!Auth0.isAuthenticated()) return false;
 
-    const roles = Auth0.getProfile()['https://flashcards.co/roles'];
+    const roles = Auth0.getProfile()['https://make-flashcards.com/roles'];
     return roles.includes('admin');
   }
 }
