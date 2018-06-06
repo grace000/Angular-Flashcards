@@ -21,6 +21,10 @@ import {FlashcardsApiService} from './flashcards-api.service';
             molestie non nibh suscipit, faucibus euismod sapien.
           </p>
           <button mat-raised-button color="accent">Start Deck</button>
+           <button mat-button color="warn" *ngIf="isAdmin()"
+                  (click)="delete(flashcard.id)">
+            Delete
+          </button>
         </mat-card-content>
       </mat-card>
     </div>
@@ -54,5 +58,26 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.flashcardsListSubs.unsubscribe();
+  }
+
+   delete(flashcardId: number) {
+    this.flashcardsApi
+      .deleteFlashcard(flashcardId)
+      .subscribe(() => {
+        this.flashcardsListSubs = this.flashcardsApi
+          .getFlashcards()
+          .subscribe(res => {
+              this.flashcardsList = res;
+            },
+            console.error
+          )
+      }, console.error);
+  }
+
+  isAdmin() {
+    if (!Auth0.isAuthenticated()) return false;
+
+    const roles = Auth0.getProfile()['https://flashcards.co/roles'];
+    return roles.includes('admin');
   }
 }

@@ -45,10 +45,10 @@ export class AppModule {
 	constructor() {
 	   Auth0.configure({
 	    domain: 'graceapps.auth0.com',
-	    audience: 'https://flashcards.co',
-	    clientID: '6u6eO3ZeEFZG5x1L4beZKZQ4trt33YWn',
+	    audience: 'https://make-flashcards.com',
+	    clientID: '4N6ejF7Ie4foHzhEeu2NS0syG9rI9qJ2',
 	    redirectUri: 'http://localhost:4200/callback',
-	    scope: 'openid profile manage:flashcards'
+	    scope: 'openid profile manage:cards'
     });
   }
 }
