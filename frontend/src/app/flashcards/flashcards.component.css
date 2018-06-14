@@ -15,3 +15,33 @@ button.new-flashcard {
     grid-template-columns: 1fr;
   }
 }
+
+mat-card-title{
+  padding-top:3rem;
+} 
+
+.tp-box {
+  position: relative;
+  width: 420px;
+  height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+div.tp-box__side {
+  width: 92%;
+  height: 82%;
+  position: absolute;
+  backface-visibility: hidden;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+div.tp-box__front {
+  color: #23262d;
+}
+div.tp-box__back {
+  color: #23262d;
+  background: #fff;
+  transform: rotateY(179.9deg);
+}

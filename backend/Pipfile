@@ -10,6 +10,7 @@ sqlalchemy = "*"
 "psycopg2-binary" = "*"
 flask-cors = "*"
 python-jose-cryptodome = "*"
+alembic = "*"
 
 [dev-packages]
 

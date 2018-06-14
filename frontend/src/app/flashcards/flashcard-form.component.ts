@@ -6,16 +6,41 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'flashcard-form',
   template: `
-    <div>
-      <h2>New Flashcard</h2>
-      <label for="flashcard-title">Title</label>
-      <input id="flashcard-title" (keyup)="updateTitle($event)">
-      <label for="flashcard-description">Description</label>
-      <input id="flashcard-description" (keyup)="updateDescription($event)">
-      <button (click)="saveFlashcard()">Save Flashcard</button>
-    </div>
-  `
+    <mat-card>
+      <h2>Flashcard</h2>
+        <mat-form-field class="full-width">
+          <input matInput
+                 placeholder="Front"
+                 (keyup)="updateTitle($event)">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea rows="5"
+                    matInput
+                    placeholder="Back"
+                    (keyup)="updateDescription($event)"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button
+                color="primary"
+                (click)="saveFlashcard()">
+          Save Flashcard
+        </button>
+    </mat-card>
+  `,
+  styles: [`
+    .flashcards-form {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+  `]
 })
+
 export class FlashcardFormComponent {
   flashcard = {
     title: '',
