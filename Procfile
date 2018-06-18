@@ -1,1 +1,1 @@
-web: gunicorn backend/src/main —-log-file -
+web: gunicorn backend/src.main —-log-file -
