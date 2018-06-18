@@ -11,8 +11,9 @@ from sqlalchemy.orm import sessionmaker
 # engine = create_engine(f'postgresql://{db_user}:{db_password}@{db_url}/{db_name}')
 # Session = sessionmaker(bind=engine)
 
-DATABASE_URL = os.environ['DATABASE_URL']
-print os.environ['DATABASE_URL']
+# DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ.get('DATABASE_URL')
+# print os.environ['DATABASE_URL']
 
 engine = create_engine(DATABASE_URL, convert_unicode=True)
 Session = sessionmaker(bind=engine)
