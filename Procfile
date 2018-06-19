@@ -1,1 +1,1 @@
-web: ./bootstrap.sh &
+web: python backend/src:main
