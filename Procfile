@@ -1,1 +1,1 @@
-web: python backend/src:main
+web: gunicorn backend.src.main:app —-log-file -
