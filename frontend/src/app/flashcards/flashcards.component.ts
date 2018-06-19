@@ -78,6 +78,7 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
     this.flashcardsListSubs.unsubscribe();
   }
 
+
   flip(index) {
     this.flashcardsList[index].isFlipped = !this.flashcardsList[index].isFlipped;
   }
