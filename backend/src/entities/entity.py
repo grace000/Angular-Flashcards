@@ -3,20 +3,28 @@ from datetime import datetime
 from sqlalchemy import create_engine, Column, String, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+from os.path import join, dirname
 
-db_url = 'localhost:5432'
-db_name = 'super_cool_flashcards'
-db_user = os.environ.get('DB_USER')
-db_password = os.environ.get('DB_PASS')
-engine = create_engine(f'postgresql://{db_user}:{db_password}@{db_url}/{db_name}')
-Session = sessionmaker(bind=engine)
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
+
+# db_url = 'localhost:5432'
+# db_name = 'super_cool_flashcards'
+# db_user = os.environ.get('DB_USER')
+# db_password = os.environ.get('DB_PASS')
+# engine = create_engine(f'postgresql://{db_user}:{db_password}@{db_url}/{db_name}')
+
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
 # DATABASE_URL = os.environ['DATABASE_URL']
-# DATABASE_URL = os.environ.get('DATABASE_URL')
-# print os.environ['DATABASE_URL']
 
-# engine = create_engine(DATABASE_URL, convert_unicode=True)
-# Session = sessionmaker(bind=engine)
+print ("hello url")
+
+# engine = create_engine(os.getenv("DATABASE_URL"))
+engine = create_engine(DATABASE_URL, convert_unicode=True)
+Session = sessionmaker(bind=engine)
 
 Base = declarative_base()
 

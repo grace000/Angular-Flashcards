@@ -11,6 +11,8 @@ sqlalchemy = "*"
 flask-cors = "*"
 python-jose-cryptodome = "*"
 alembic = "*"
+gunicorn = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
